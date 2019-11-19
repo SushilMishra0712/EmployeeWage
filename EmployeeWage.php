@@ -21,21 +21,21 @@ class Employee
         fscanf(STDIN,"%s",$this->employee_name);
         //random function 1 for present 0 for absent
         $attendance=rand(0,2);
-        if($attendance==0)
+        switch($attendance)
         {
-            echo $this->employee_name." is Absent\n";
-        }
-        else if($attendance==1)
-        {
-            echo $this->employee_name." is Present\n";
-            echo $this->employee_name." is Full-time employee\n";
-            self::daily_EmployeeWage();
-        }
-        else 
-        {
-            echo $this->employee_name." is Present\n";
-            echo $this->employee_name." is Part-time employee\n";
-            self::partTime_EmployeeWage();
+            case 0:
+                echo $this->employee_name." is Absent\n";
+            break;
+            case 1:
+                echo $this->employee_name." is Present\n";
+                echo $this->employee_name." is Full-time employee\n";
+                self::daily_EmployeeWage();
+            break;
+            case 2:
+                echo $this->employee_name." is Present\n";
+                echo $this->employee_name." is Part-time employee\n";
+                self::partTime_EmployeeWage();
+            break;
         }
     }
 
