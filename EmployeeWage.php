@@ -6,7 +6,8 @@ class Employee
     public $wage_per_hour;
     public $full_day_hour;
     public $part_time_hour;
-    public $working_day_per_month;
+    public $max_working_hour_permonth;
+    public $max_working_day_permonth;
 
     public function __construct()
     {
@@ -14,7 +15,8 @@ class Employee
         $this->wage_per_hour=20;
         $this->full_day_hour=8;
         $this->part_time_hour=8;
-        $this->working_day_per_month=20;
+        $this->max_working_hour_permonth=100;
+        $this->max_working_day_permonth=20;
     }
 
     public function employee_Attendance()
@@ -44,21 +46,42 @@ class Employee
     public function Monthly_Fulltime_EmployeeWage()
     {
         //calculate daily wage of employee
-        $wages_per_day = $this->wage_per_hour*$this->full_day_hour;
-        echo "Daily Wages of ".$this->employee_name." is:".$wages_per_day."\n";
-        $wages_per_month = $this->working_day_per_month*$wages_per_day;
-        echo "Monthly Wages of ".$this->employee_name." is:".$wages_per_month."\n";
+        echo "How many hours you work this month?\n";
+        fscanf(STDIN,"%d",$this->max_working_hour_permonth);
+        echo "How many days you work this month?\n";
+        fscanf(STDIN,"%d",$this->max_working_day_permonth);
+
+        if($this->max_working_hour_permonth>100 || $this->max_working_day_permonth>20)
+        {
+            echo "Total working hours/days reached..\n";
+        }
+        else
+        {
+            $wages_per_month = $this->max_working_hour_permonth*$this->max_working_day_permonth*$this->wage_per_hour;
+            echo "Monthly Wages of ".$this->employee_name." is:".$wages_per_month."\n";
+        }
     }
 
     public function Monthly_Parttime_EmployeeWage()
     {
         //calculate daily wage of part time employee
-        $wages_per_day = $this->wage_per_hour*$this->part_time_hour;
-        echo "Daily Wages of ".$this->employee_name." is:".$wages_per_day."\n";
-        $wages_per_month = $this->working_day_per_month*$wages_per_day;
-        echo "Monthly Wages of ".$this->employee_name." is:".$wages_per_month."\n";
+        echo "How many hours you work this month?\n";
+        fscanf(STDIN,"%d",$this->max_working_hour_permonth);
+        echo "How many days you work this month?\n";
+        fscanf(STDIN,"%d",$this->max_working_day_permonth);
+
+        if($this->max_working_hour_permonth>100 || $this->max_working_day_permonth>20)
+        {
+            echo "Total working hours/days reached..\n";
+        }
+        else
+        {
+            $wages_per_month = $this->max_working_hour_permonth*$this->max_working_day_permonth*$this->wage_per_hour;
+            echo "Monthly Wages of ".$this->employee_name." is:".$wages_per_month."\n";
+        }
     }
 }
+
 $object=new Employee;
 $object->employee_Attendance();
 
