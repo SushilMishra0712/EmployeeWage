@@ -6,6 +6,7 @@ class Employee
     public $wage_per_hour;
     public $full_day_hour;
     public $part_time_hour;
+    public $working_day_per_month;
 
     public function __construct()
     {
@@ -13,6 +14,7 @@ class Employee
         $this->wage_per_hour=20;
         $this->full_day_hour=8;
         $this->part_time_hour=8;
+        $this->working_day_per_month=20;
     }
 
     public function employee_Attendance()
@@ -29,28 +31,32 @@ class Employee
             case 1:
                 echo $this->employee_name." is Present\n";
                 echo $this->employee_name." is Full-time employee\n";
-                self::daily_EmployeeWage();
+                self::Monthly_Fulltime_EmployeeWage();
             break;
             case 2:
                 echo $this->employee_name." is Present\n";
                 echo $this->employee_name." is Part-time employee\n";
-                self::partTime_EmployeeWage();
+                self::Monthly_Parttime_EmployeeWage();
             break;
         }
     }
 
-    public function daily_EmployeeWage()
+    public function Monthly_Fulltime_EmployeeWage()
     {
         //calculate daily wage of employee
         $wages_per_day = $this->wage_per_hour*$this->full_day_hour;
         echo "Daily Wages of ".$this->employee_name." is:".$wages_per_day."\n";
+        $wages_per_month = $this->working_day_per_month*$wages_per_day;
+        echo "Monthly Wages of ".$this->employee_name." is:".$wages_per_month."\n";
     }
 
-    public function partTime_EmployeeWage()
+    public function Monthly_Parttime_EmployeeWage()
     {
         //calculate daily wage of part time employee
         $wages_per_day = $this->wage_per_hour*$this->part_time_hour;
         echo "Daily Wages of ".$this->employee_name." is:".$wages_per_day."\n";
+        $wages_per_month = $this->working_day_per_month*$wages_per_day;
+        echo "Monthly Wages of ".$this->employee_name." is:".$wages_per_month."\n";
     }
 }
 $object=new Employee;
