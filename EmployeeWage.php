@@ -88,6 +88,8 @@ class Employee
     public function Store_daily_Wage()
     {
         $total_wage=0;
+        $max_day_work=0;
+        
         for($i=1;$i<21;$i++)
         {
             echo "How many hours do you work on day ".$i." ?\n";
@@ -104,11 +106,21 @@ class Employee
             {
                 print_r($temp_array);
                 echo "You have reached your working hour limit\n";
-                exit(0);
+                $max_day_work=$i;
+            break;
             }
             $temp_array[$i]=array($wage_per_day,$total_wage);
         }
-        print_r($temp_array);
+
+        for($i=1;$i<$max_day_work;$i++)
+        {
+            echo "Day ".$i."\n";
+            echo "Wage:";
+            print_r($temp_array[$i][0]);
+            echo "\nTotal wage:";
+            print_r($temp_array[$i][1]);
+            echo "\n";
+        }
     }
 }
 
