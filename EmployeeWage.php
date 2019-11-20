@@ -42,7 +42,7 @@ class Employee
             break;
             case 3:
                 echo "Store daily wages along with total wage:\n";
-                self::Store_daily_Wage();
+                self::Store_Day_And_Daily_Wage();
             break;
         }
     }
@@ -85,7 +85,7 @@ class Employee
         }
     }
 
-    public function Store_daily_Wage()
+    public function Store_Day_And_Daily_Wage()
     {
         $total_wage=0;
         $max_day_work=0;
@@ -100,25 +100,26 @@ class Employee
                 $i--;
                 continue;
             }
+            $day="Day ".$i." ";
             $wage_per_day=$this->full_day_hour*$this->wage_per_hour;
             $total_wage=$total_wage+$wage_per_day;
             if($total_wage>2000)
             {
-                print_r($temp_array);
+                // print_r($temp_array);
                 echo "You have reached your working hour limit\n";
                 $max_day_work=$i;
             break;
             }
-            $temp_array[$i]=array($wage_per_day,$total_wage);
+            $temp_array[$i]=array($day,$wage_per_day,$total_wage);
         }
 
         for($i=1;$i<$max_day_work;$i++)
         {
-            echo "Day ".$i."\n";
-            echo "Wage:";
             print_r($temp_array[$i][0]);
-            echo "\nTotal wage:";
+            echo "\nWage:";
             print_r($temp_array[$i][1]);
+            echo "\nTotal wage:";
+            print_r($temp_array[$i][2]);
             echo "\n";
         }
     }
